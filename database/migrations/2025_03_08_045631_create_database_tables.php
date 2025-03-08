@@ -42,7 +42,7 @@ return new class extends Migration {
             $table->foreignId('team_id')->nullable()->constrained('teams')->onDelete('set null');
             $table->string('full_name');
             $table->string('nim')->unique();
-            $table->enum('major', ['pti', 'informatika', 'lainnya']);
+            $table->enum('major', ['Bisnis Digital', 'Informatika', 'Sistem Informasi', 'Teknik Elektro', 'Teknik Industri', 'Rekayasa Perangkat Lunak', 'Teknik Logistik']);
             $table->date('birth_date');
             $table->string('image')->nullable();
             $table->timestamps();
