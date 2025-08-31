@@ -1,78 +1,95 @@
 @extends('layouts.app')
-@section('title')
-    Register Page
-@endsection
+
 @section('content')
-    <div class="container-login">
-        <!-- Bagian Kiri -->
-        <div class="left-side">
-            <img src="{{ asset('img/punggawa.png') }}" alt="Logo" width="120">
-            <h3 class="mt-3">PUNGGAWA</h3>
-            <h5 class="text-warning">INSPIRATIF</h5>
+    <div class="container-fluid vh-100 d-flex flex-column flex-md-row">
+        <!-- Logo untuk mobile -->
+        <div class="d-md-none w-100 bg-[#032B3A] text-center">
+            <img src="{{ 'img/Punggawa_icon.png' }}" alt="Logo"
+                style="max-width: 200px; height: auto; margin-top: 80px; margin-bottom: 20px;  ">
         </div>
 
-        <!-- Bagian Kanan -->
-        <div class="right-side">
-            <h2>REGISTER PIONIR</h2>
-            <p>Please enter your identity</p>
-            <!-- Form 1 (Identitas) -->
-            <div class="login-box" id="form-step-1">
-                <form id="registerForm">
-                    @csrf
-                    <div class="mb-3">
-                        <label class="form-label">Nama</label>
-                        <input type="text" class="form-control" name="nama" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">NIM</label>
-                        <input type="text" class="form-control" name="NIM" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" name="phonenumber" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Program Study</label>
-                        <input type="text" class="form-control" name="programstudy" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Angkatan</label>
-                        <input type="text" class="form-control" name="angkatan" required>
-                    </div>
-                    <button type="button" class="btn btn-custom mt-2" onclick="nextStep()">Next</button>
-                </form>
+        {{-- Kiri (Logo) --}}
+        <div class="col-md-6 bg-white d-none d-md-flex justify-content-center align-items-center p-4">
+            <div class="text-center">
+                <img src="{{ asset('img/punggawa_logos.png') }}" alt="Punggawa Inspiratif" class="img-fluid mb-2"
+                    style="max-width: 250px;">
             </div>
+        </div>
 
-            <!-- Form 2 (Username & Password) -->
-            <div class="login-box" id="form-step-2" style="display: none;">
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Username</label>
-                        <input type="text" class="form-control" name="username" required>
+        {{-- Kanan (Form) --}}
+        <div class="col-md-6 d-flex justify-content-center align-items-center bg-[#032B3A] text-white p-4">
+            <div class="w-100" style="max-width: 400px;">
+                <h2 class="text-center fw-bold">REGISTER PIONIR</h2>
+                <p class="text-center small mb-4">Please enter your identity</p>
+
+                <form id="registerForm" method="POST" action="{{ route('register') }}">
+                    @csrf
+
+                    {{-- Step 1 --}}
+                    <div id="step1">
+                        <div class="mb-3">
+                            <input type="text" name="name" class="form-control" placeholder="Nama" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="nim" class="form-control" placeholder="NIM" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="phone" class="form-control" placeholder="Phone Number" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="program" class="form-control" placeholder="Program Study" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="angkatan" class="form-control" placeholder="Angkatan" required>
+                        </div>
+                        <button type="button" onclick="nextStep()" class="btn w-100 rounded-pill"
+                            style="color:white ;background-color: #2C717C; transition: background-color 0.3s ease;"
+                            onmouseover="this.style.backgroundColor='#245E66'"
+                            onmouseout="this.style.backgroundColor='#2C717C'">Next</button>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" required>
+
+                    {{-- Step 2 --}}
+                    <div id="step2" class="d-none">
+                        <div class="mb-3">
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" name="password_confirmation" class="form-control"
+                                placeholder="Confirm Password" required>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" onclick="prevStep()"
+                                class="rounded-pill px-4 py-2 rounded border border-success text-white bg-transparent transition"
+                                onmouseover="this.style.backgroundColor='#245E66'">
+                                Back
+                            </button>
+                            <button type="submit" class="btn btn-info rounded-pill"
+                                style="color:white ;background-color: #2C717C; transition: background-color 0.3s ease;"
+                                onmouseover="this.style.backgroundColor='#245E66'"
+                                onmouseout="this.style.backgroundColor='#2C717C'">Done</button>
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-secondary mt-2" onclick="prevStep()">Back</button>
-                    <button type="submit" class="btn btn-custom mt-2">Done</button>
                 </form>
             </div>
         </div>
     </div>
+
+    {{-- Script untuk handle step --}}
     <script>
         function nextStep() {
-            document.getElementById("form-step-1").style.display = "none";
-            document.getElementById("form-step-2").style.display = "block";
+            document.getElementById("step1").classList.add("d-none");
+            document.getElementById("step2").classList.remove("d-none");
         }
 
         function prevStep() {
-            document.getElementById("form-step-1").style.display = "block";
-            document.getElementById("form-step-2").style.display = "none";
+            document.getElementById("step2").classList.add("d-none");
+            document.getElementById("step1").classList.remove("d-none");
         }
     </script>
 @endsection
