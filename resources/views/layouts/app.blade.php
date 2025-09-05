@@ -11,6 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     {{-- my css --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    
+        <!-- Animate.css via CDN -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     @stack('styles')
     <style>
         body {

@@ -11,7 +11,7 @@
         {{-- Kiri (Logo) --}}
         <div class="col-md-6 bg-white d-none d-md-flex justify-content-center align-items-center p-4">
             <div class="text-center">
-                <img src="{{ asset('img/punggawa_logos.png') }}" alt="Punggawa Inspiratif" class="img-fluid mb-2"
+                <img src="{{ asset('img/punggawa_logos.png') }}" alt="Punggawa Inspiratif" class="img-fluid mb-2 animate__animated animate__pulse animate__slow animate__infinite w-32"
                     style="max-width: 250px;">
             </div>
         </div>

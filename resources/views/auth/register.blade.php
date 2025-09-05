@@ -11,7 +11,7 @@
         {{-- Kiri (Logo) --}}
         <div class="col-md-6 bg-white d-none d-md-flex justify-content-center align-items-center p-4">
             <div class="text-center">
-                <img src="{{ asset('img/punggawa_logos.png') }}" alt="Punggawa Inspiratif" class="img-fluid mb-2"
+                <img src="{{ asset('img/punggawa_logos.png') }}" alt="Punggawa Inspiratif" class="img-fluid mb-2 animate__animated animate__pulse animate__slow animate__infinite w-32"
                     style="max-width: 250px;">
             </div>
         </div>
@@ -49,6 +49,11 @@
                             style="color:white ;background-color: #2C717C; transition: background-color 0.3s ease;"
                             onmouseover="this.style.backgroundColor='#245E66'"
                             onmouseout="this.style.backgroundColor='#2C717C'">Next</button>
+                        <button type="button" onclick="window.location.href='{{ route('login') }}'"
+                            class="rounded-pill mt-2 p-2 w-100 rounded border border-success text-white bg-transparent transition"
+                            onmouseover="this.style.backgroundColor='#245E66'">
+                            Back
+                        </button>
                     </div>
 
                     {{-- Step 2 --}}
