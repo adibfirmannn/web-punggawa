@@ -10,14 +10,14 @@
 </head>
 <body>
     <!-- Mobile Toggle Button -->
-    <button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()">
+    <button class="mobile-toggle" id="mobileToggle">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
     </button>
     
     <!-- Mobile Overlay -->
-    <div class="mobile-overlay" id="mobileOverlay" onclick="closeSidebar()"></div>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
     
     @include('components.admin_sidebar')
     <div id="mainContent">

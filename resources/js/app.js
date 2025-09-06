@@ -92,6 +92,10 @@ function closeSidebar() {
     }
 }
 
+// Make functions globally available
+window.toggleSidebar = toggleSidebar;
+window.closeSidebar = closeSidebar;
+
 // Check if device is mobile/tablet
 function isMobileOrTablet() {
     return window.innerWidth <= 1024;
@@ -103,9 +107,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('adminSidebar');
     const mainContent = document.getElementById('mainContent');
     const overlay = document.getElementById('mobileOverlay');
+    const mobileToggle = document.getElementById('mobileToggle');
     
     console.log('Sidebar element:', sidebar);
     console.log('MainContent element:', mainContent);
+    console.log('Overlay element:', overlay);
+    console.log('Mobile Toggle element:', mobileToggle);
+    console.log('Window width:', window.innerWidth);
+    console.log('Is mobile/tablet:', window.innerWidth <= 1024);
     
     if (sidebar && mainContent) {
         console.log('Initializing sidebar...');
@@ -134,6 +143,29 @@ document.addEventListener('DOMContentLoaded', function() {
             if (logoText) logoText.style.display = 'none';
             navTexts.forEach(text => text.style.display = 'none');
             if (logoutText) logoutText.style.display = 'none';
+        }
+        
+        // Add click event listeners to mobile toggle button
+        const mobileToggle = document.getElementById('mobileToggle');
+        if (mobileToggle) {
+            console.log('Adding click listener to mobile toggle button');
+            mobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Mobile toggle button clicked');
+                toggleSidebar();
+            });
+        } else {
+            console.log('Mobile toggle button not found');
+        }
+        
+        // Add click event listener to mobile overlay
+        if (overlay) {
+            console.log('Adding click listener to mobile overlay');
+            overlay.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Mobile overlay clicked');
+                closeSidebar();
+            });
         }
         
         // Add click event listeners to nav links
@@ -198,6 +230,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         console.log('Sidebar initialization complete');
+        
+        // Test function - remove this after testing
+        window.testToggle = function() {
+            console.log('Testing toggle function...');
+            toggleSidebar();
+        };
+        
     } else {
         console.log('Sidebar or mainContent not found during initialization');
     }

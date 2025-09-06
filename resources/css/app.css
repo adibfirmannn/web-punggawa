@@ -403,7 +403,7 @@ p {
 }
 
 .mobile-overlay.show {
-    display: block;
+    display: block !important;
 }
 
 /* Responsive Design */
@@ -417,15 +417,18 @@ p {
     
     .admin-sidebar.open {
         transform: translateX(0) !important;
+        visibility: visible !important;
     }
     
     .admin-sidebar.minimized {
         width: 280px !important;
         transform: translateX(-100%);
+        visibility: hidden;
     }
     
     .admin-sidebar.minimized.open {
         transform: translateX(0) !important;
+        visibility: visible !important;
     }
     
     .admin-sidebar.minimized:hover {
@@ -461,16 +464,19 @@ p {
     
     .admin-sidebar.open {
         transform: translateX(0) !important;
+        visibility: visible !important;
     }
     
     .admin-sidebar.minimized {
         width: 100% !important;
         max-width: 280px !important;
         transform: translateX(-100%);
+        visibility: hidden;
     }
     
     .admin-sidebar.minimized.open {
         transform: translateX(0) !important;
+        visibility: visible !important;
     }
     
     .admin-sidebar.minimized:hover {
