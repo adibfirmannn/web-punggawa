@@ -19,7 +19,12 @@ Auth::routes();
 Route::get('/', function () {
     return redirect()->route('login');
 });
+Route::get('/admin/dashboard', function () {
+    return view('pages.admin.dashboard'); // sesuaikan dengan lokasi file view kamu
+})->name('admin.dashboard');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
